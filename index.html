@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PROSHUB || TIC TAC TOE</title>
+    <link rel="stylesheet" href="index.css" />
+   
+    <link rel = "shortcut icon" href ="imgS/favicon op.jpg" type = "image/jpg">
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<header class="text-gray-600 body-font">
+  <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+    <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+      <img src="https://yt3.ggpht.com/1HGYBt4n_lgptIbqe0Dk9bfrsHvJobhM3c3CqnPrKARyx8JUH1zw2n9ywl-pRMhyKuPfP6OzcxU=s176-c-k-c0x00ffffff-no-rj" height="40" width="40">
+      <span class="ml-3 text-xl">MyTicTacToe</span>
+    </a>
+    
+    <!--navbar is here-->
+    <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
+      <a href="https://www.youtube.com/channel/UCfClesu2tZTu-9XVWv3Ki6A" class="mr-5 hover:text-gray-900">YOUTUBE</a>
+      <a href="https://github.com/Pro-The-Dev-Op" class="mr-5 hover:text-gray-900">GITHUB</a>
+    </nav>
+    <a href="home.html" class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">Go to MAIN PAGE
+      <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+        <path d="M5 12h14M12 5l7 7-7 7"></path>
+      </svg>
+    </a>ㅤ                   
+    <a href="videos.html" class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">Go To Vidoes Page
+      <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+        <path d="M5 12h14M12 5l7 7-7 7"></path>
+      </svg>
+    </a>&nbsp;&nbsp;&nbsp;
+    <a href="games.html" class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">Go To Games Page
+      <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+        <path d="M5 12h14M12 5l7 7-7 7"></path>
+      </svg>
+    </a>&nbsp;&nbsp;&nbsp;
+    <a href="squidgame.html" class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">Play SQUID GAME
+      <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+        <path d="M5 12h14M12 5l7 7-7 7"></path>
+      </svg>
+    </a>&nbsp;&nbsp;&nbsp;
+    <a href="meme.html" class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">GO CHAT WITH PEOPLE
+      <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+        <path d="M5 12h14M12 5l7 7-7 7"></path>
+      </svg>
+    </a>&nbsp;&nbsp;&nbsp;
+    <a href="menja.html" class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">GO to PLAY MENJA
+      <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+        <path d="M5 12h14M12 5l7 7-7 7"></path>
+      </svg>
+    </a>
+       
+  </div>
+</header>
+
+<script>$(document).ready(function() {
+  var turn = true;
+  var X = '<i class="fa fa-times fa-4x" aria-hidden="true"></i>';
+  var O = '<i class="fa fa-circle-o fa-4x" aria-hidden="true"></i>';
+  var divArray = ["#1", "#2", "#3", "#4", "#5", "#6", "#7", "#8", "#9"];
+
+  /* check if passed var (a) wins */
+  function checkWin(a) {
+    if ($("#1").hasClass(a) && $("#2").hasClass(a) && $("#3").hasClass(a) ||
+      $("#4").hasClass(a) && $("#5").hasClass(a) && $("#6").hasClass(a) ||
+      $("#7").hasClass(a) && $("#8").hasClass(a) && $("#9").hasClass(a) ||
+      $("#1").hasClass(a) && $("#5").hasClass(a) && $("#9").hasClass(a) ||
+      $("#3").hasClass(a) && $("#5").hasClass(a) && $("#7").hasClass(a) ||
+      $("#1").hasClass(a) && $("#4").hasClass(a) && $("#7").hasClass(a) ||
+      $("#2").hasClass(a) && $("#5").hasClass(a) && $("#8").hasClass(a) ||
+      $("#3").hasClass(a) && $("#6").hasClass(a) && $("#9").hasClass(a)) {
+      $(".col-xs-4").unbind();
+      $(".col-xs-4").css("opacity", "0.6");
+      $(".text h1").html(a + " Wins!");
+      $(".text").show();
+      return true;
+    } else {
+      return false;
+    }
+  }
+  /* check if all divs are full && nobody has win yet if true it's a tie */
+  function checkTie() {
+    if (checkWin("cross") === false && checkWin("circle") === false) {
+      var tie = 0;
+      for (var i = 0; i < divArray.length; i++) {
+        if ($(divArray[i]).hasClass("cross") || $(divArray[i]).hasClass("circle")) {
+          tie += 1;
+        }
+      }
+      if (tie === 9) {
+        $(".col-xs-4").unbind();
+        $(".col-xs-4").css("opacity", "0.6");
+        $(".text h1").html("It's a Tie!");
+        $(".text").show();
+      }
+    } else {
+      checkWin("cross");
+      checkWin("circle");
+    }
+  }
+  /* clear board */
+  function newGame() {
+    $(".col-xs-4").empty();
+    $(".col-xs-4").removeClass("cross circle");
+    $(".col-xs-4").css("background", "#fff");
+    $(".col-xs-4").css("opacity", "1");
+    $(".text").hide();
+    $(".col-xs-4").unbind();
+  }
+  /* pc random ai -> before moving check if atleast 1 div is empty || the game is not over */
+  function monkeyMove() {
+    if (checkWin("cross") === false) {
+      if ($("#1").is(":empty") || $("#2").is(":empty") || $("#3").is(":empty") || $("#4").is(":empty") || $("#5").is(":empty") || $("#6").is(":empty") || $("#7").is(":empty") || $("#8").is(":empty") || $("#9").is(":empty")) {
+        var random = Math.floor(Math.random() * 9);
+        var randomdiv = $(".col-xs-4").eq(random);
+        if ($(randomdiv).html().length == 0) {
+          $(O).appendTo($(randomdiv));
+          $(randomdiv).addClass("circle");
+          checkWin("circle");
+          checkTie();
+          $(".col-xs-4").click(smarterMonkey);
+        } else {
+          monkeyMove()
+        }
+      }
+    } else {
+      checkWin("cross");
+      checkWin("circle");
+      checkTie();
+    }
+  }
+  /* human move vs monkey */
+  function smarterMonkey() {
+    if ($(this).html().length == 0) {
+      $(X).appendTo($(this));
+      $(this).addClass("cross");
+      checkWin("cross");
+      checkTie();
+      monkeyMove();
+    }
+  }
+  /* human move vs pc */
+  function smarterMonkey2() {
+    if ($(this).html().length == 0) {
+      $(X).appendTo($(this));
+      $(this).addClass("cross");
+      checkWin("cross");
+      checkTie();
+      greatCounter();
+    }
+  }
+
+  function youCantWin(side, a, b, c) { /* check if 2 consecutives X or O */
+    if ($(a).hasClass(side) && $(b).hasClass(side) && $(c).is(":empty") ||
+      $(c).hasClass(side) && $(a).hasClass(side) && $(b).is(":empty") ||
+      $(b).hasClass(side) && $(c).hasClass(side) && $(a).is(":empty")) {
+      if ($(a).is(":empty")) {
+        $(O).appendTo($(a));
+        $(a).addClass("circle");
+        checkWin("circle");
+        checkTie();
+        smarterMonkey2();
+      } else if ($(b).is(":empty")) {
+        $(O).appendTo($(b));
+        $(b).addClass("circle");
+        checkWin("circle");
+        checkTie();
+        smarterMonkey2();
+      } else {
+        $(O).appendTo($(c));
+        $(c).addClass("circle");
+        checkWin("circle");
+        checkTie();
+        smarterMonkey2();
+      }
+    } else {
+      return false;
+    }
+  }
+  /* calls every combination and counter it */
+  function greatCounter() {
+    if ($('.circle').length == 0 && $("#5").is(":empty")) { /* if possible first move is always center */
+      $(O).appendTo($("#5"));
+      $("#5").addClass("circle");
+    } else if ($('.circle').length == 1 && $("#5").hasClass("circle") && !youCantWin("cross", "#1", "#2", "#3") &&
+      !youCantWin("cross", "#4", "#5", "#6") &&
+      !youCantWin("cross", "#7", "#8", "#9") &&
+      !youCantWin("cross", "#1", "#4", "#7") &&
+      !youCantWin("cross", "#2", "#5", "#8") &&
+      !youCantWin("cross", "#3", "#6", "#9") &&
+      !youCantWin("cross", "#1", "#5", "#9") &&
+      !youCantWin("cross", "#3", "#5", "#7")) {
+      if ($("#1").hasClass("cross") && $("#9").hasClass("cross") || $("#3").hasClass("cross") && $("#7").hasClass("cross")) { /* counter double win strategy on edges, 2 cases, 1 counter */
+        $(O).appendTo($("#2"));
+        $("#2").addClass("circle");
+        checkWin("circle");
+        checkTie();
+        smarterMonkey2();
+      } else { /* counter double win strategy on non-edges, 4 cases, 4 counters */
+        if ($("#3").hasClass("cross") && $("#7").is(":empty") && ($("#4").hasClass("cross") || $("#8").hasClass("cross"))) {
+          $(O).appendTo($("#7"));
+          $("#7").addClass("circle");
+          checkWin("circle");
+          checkTie();
+          smarterMonkey2();
+        } else if ($("#7").hasClass("cross") && $("#3").is(":empty") && ($("#2").hasClass("cross") || $("#6").hasClass("cross"))) {
+          $(O).appendTo($("#3"));
+          $("#3").addClass("circle");
+          checkWin("circle");
+          checkTie();
+          smarterMonkey2();
+        } else if ($("#1").hasClass("cross") && $("#9").is(":empty") && ($("#6").hasClass("cross") || $("#8").hasClass("cross"))) {
+          $(O).appendTo($("#9"));
+          $("#9").addClass("circle");
+          checkWin("circle");
+          checkTie();
+          smarterMonkey2();
+        } else if($("#9").hasClass("cross") && $("#1").is(":empty") && ($("#2").hasClass("cross") || $("#4").hasClass("cross"))){
+          $(O).appendTo($("#1"));
+          $("#1").addClass("circle");
+          checkWin("circle");
+          checkTie();
+          smarterMonkey2();
+        }
+        else { 
+      if ($("#3").is(":empty") && ($("#4").is(":empty") || $("#8").is(":empty"))) {
+        $(O).appendTo($("#3"));
+        $("#3").addClass("circle");
+        checkWin("circle");
+        checkTie();
+        smarterMonkey2();
+      } else { /* else it doens't play second turn if pc is first */
+        $(O).appendTo($("#7"));
+        $("#7").addClass("circle");
+        checkWin("circle");
+        checkTie();
+        smarterMonkey2();
+      }
+    }
+      }
+    } else if ($('.circle').length == 0 && $("#5").hasClass("cross") && $("#1").is(":empty")) {
+      $(O).appendTo($("#1"));
+      $("#1").addClass("circle");
+      checkWin("circle");
+      checkTie();
+      smarterMonkey2();
+    } else if($("circle").length == 1 && $("cross").length == 1){
+      if(("#1").is(":empty")){
+        $(O).appendTo($("#1"));
+        $("#1").addClass("circle");
+        checkWin("circle");
+        checkTie();
+        smarterMonkey2();
+      }
+      else{
+        $(O).appendTo($("#7"));
+        $("#7").addClass("circle");
+        checkWin("circle");
+        checkTie();
+        smarterMonkey2();
+      }
+    } else {
+      /* check if can win */
+      youCantWin("circle", "#1", "#2", "#3");
+      youCantWin("circle", "#4", "#5", "#6");
+      youCantWin("circle", "#7", "#8", "#9");
+      youCantWin("circle", "#1", "#4", "#7");
+      youCantWin("circle", "#2", "#5", "#8");
+      youCantWin("circle", "#3", "#6", "#9");
+      youCantWin("circle", "#1", "#5", "#9");
+      youCantWin("circle", "#3", "#5", "#7");
+      /* check if can counter */
+      youCantWin("cross", "#1", "#2", "#3");
+      youCantWin("cross", "#4", "#5", "#6");
+      youCantWin("cross", "#7", "#8", "#9");
+      youCantWin("cross", "#1", "#4", "#7");
+      youCantWin("cross", "#2", "#5", "#8");
+      youCantWin("cross", "#3", "#6", "#9");
+      youCantWin("cross", "#1", "#5", "#9");
+      youCantWin("cross", "#3", "#5", "#7");
+      /* this shouldnt work but it does */
+      monkeyMove();
+    }
+  }
+
+  /* human vs human */
+  $(".vsHuman").click(function() {
+    newGame();
+    $(".col-xs-4").click(function() {
+      if ($(this).html().length == 0) {
+        if (turn) {
+          $(X).appendTo($(this));
+          $(this).addClass("cross");
+          checkWin("cross");
+          checkTie();
+          turn = false;
+        } else {
+          $(O).appendTo($(this));
+          $(this).addClass("circle");
+          checkWin("circle");
+          checkTie();
+          turn = true;
+        }
+      }
+    });
+  });
+
+  /* monkey vs human | choose randomly the first player */
+  $(".vsMonkey").click(function() {
+    newGame();
+    var chooseFirst = Math.floor(Math.random() * 2);
+    if (chooseFirst === 1) {
+      $(".col-xs-4").click(smarterMonkey);
+    } else {
+      monkeyMove();
+      $(".col-xs-4").click(smarterMonkey);
+    }
+  });
+
+  /* pc vs human | choose randomly first player */
+  $(".vsPc").click(function() {
+    newGame();
+    var chooseFirst = Math.floor(Math.random() * 2);
+    if (chooseFirst === 1) { /* tic tac god first */
+      greatCounter();
+      $(".col-xs-4").click(smarterMonkey2);
+    } else { /* human first */
+      $(".col-xs-4").click(smarterMonkey2);
+    }
+  });
+  /* start 1vs1 default */
+  $(".vsHuman").click();
+
+});</script>
+
+  <title>Document</title>
+</head>
+<body>
+  <section>
+  <div class="row">
+    <div id="1" class="col-xs-4"></div>
+    <div id="2" class="col-xs-4"></div>
+    <div id="3" class="col-xs-4"></div>
+    <div id="4" class="col-xs-4"></div>
+    <div id="5" class="col-xs-4"></div>
+    <div id="6" class="col-xs-4"></div>
+    <div id="7" class="col-xs-4"></div>
+    <div id="8" class="col-xs-4"></div>
+    <div id="9" class="col-xs-4"></div>
+  </div>
+  <div class="buttons">
+  <div class="btn vsHuman">2 Players</div>
+  <div class="btn vsMonkey">Play vs Monkey</div>
+  <div class="btn vsPc">Play vs Pc</div>
+  </div>
+  <div style="display:none" class="text"><h1>You Win!</h1></div>
+  </section>
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
+    
+        .ads {
+          color: black;
+  
+  
+          display: inline-block;
+  
+          position: relative;
+  
+        }
+  
+        .ads:after {
+          background: none repeat scroll 0 0 transparent;
+          bottom: 0;
+          content: "";
+          display: block;
+          height: 2px;
+          left: 50%;
+          position: absolute;
+          background:#002bff;
+          transition: width 0.3s ease 0s, left 0.3s ease 0s;
+          width: 0;
+        }
+  
+        .ads:hover:after {
+          width: 100%;
+          left: 0;
+        }
+  
+        @media screen and (max-height: 300px) {
+          ul {
+            margin-top: 40px;
+          }
+        }
+      
+  footer{
+      position: relative;
+      width: 100%;
+      height: 30%;
+      background: #dc6007;
+      min-height: 100px;
+      padding: 20px 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction:column;
+      font-family: 'Poppins', sans-serif;
+      margin-top: 100px;
+  }
+  footer .social_icon, footer .menu{
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin:10px 0;
+      flex-wrap: wrap;
+  }
+  footer .social_icon li, footer .menu li{
+      list-style: none;
+  }
+  footer .social_icon li .a, footer .menu li .a{
+      font-size:  2em;
+      color:#fff;
+      margin:0 10px;
+      display: inline-block;
+      transition: 0.5s
+  }
+  footer .social_icon li .a:hover{
+      transform: translateY(-10px);
+      
+  }
+  footer .menu li .a{
+      font-size:  1.2em;
+      color:#fff;
+      margin:0 10px;
+      display: inline-block;
+      transition: 0.5s;
+      opacity: 0.75;
+  }
+  footer .menu li .a:hover{
+      opacity: 1;
+  }
+  footer .p{
+      color: #fff;
+      text-align: center;
+      margin-top: 15px;
+      margin-bottom: 10px;
+      font-size:1.1em
+  }
+  footer .wave{
+      position: absolute;
+      top: -100px;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      background: url(imgS/raghaov.png);
+      background-size:1000px 100px;
+  }
+  footer .wave#wave1{
+      z-index: 1000;
+      opacity: 1;
+      bottom: 0;
+      animation: animateWave 4s linear infinite;
+  }
+  footer .wave#wave2{
+      z-index: 999;
+      opacity: 0.5;
+      bottom: 10px;
+      animation: animateWave_02 4s linear infinite;
+  }
+  footer .wave#wave3{
+      z-index: 1000;
+      opacity: 0.2;
+      bottom: 15px;
+      animation: animateWave 3s linear infinite;
+  }
+  footer .wave#wave4{
+      z-index: 999;
+      opacity: 0.7;
+      bottom: 20px;
+      animation: animateWave_02 3s linear infinite;
+  }
+  
+  @keyframes animateWave{
+      0%{
+          background-position-x: 1000px;
+      }
+      100%{
+          background-position-x: 0px;
+      }
+  }
+  @keyframes animateWave_02{
+      0%{
+          background-position-x: 0px;
+      }
+      100%{
+          background-position-x: 1000px;
+      }
+  }
+  </style>
+  
+    <!--footer starts here-->
+    <footer >
+      <div class="waves">
+        <div class="wave" id="wave1"></div>
+        <div class="wave" id="wave2"></div>
+        <div class="wave" id="wave3"></div>
+        <div class="wave" id="wave4"></div>
+      </div>
+      
+      <ul class="social_icon">
+        <li><a href="https://www.facebook.com/raghaov.sharma.9/" class="a"> <ion-icon name="logo-facebook"></ion-icon></a></li>
+        <li><a href="https://www.youtube.com/channel/UCfClesu2tZTu-9XVWv3Ki6A" class="a"><ion-icon name="logo-youtube"></ion-icon></a></li>
+        <li><a href="https://github.com/Pro-The-Dev-Op" class="a"><ion-icon name="logo-github"></ion-icon></a></li>
+        <li><a href="https://www.instagram.com/pro_gamer_opbolte/" class="a"><ion-icon name="logo-instagram"></ion-icon></a></li>
+      </ul>
+      <ul class="menu">
+        <li><a href="mailto:raghaov@gmail.com" class="a ads red text-white"><ion-icon name="mail-open-outline"></ion-icon>&nbsp;raghaov@gmail.com</a></li>
+      </ul>
+      <ul class="menu">
+        <li><a href="tel:9910115502" class="a ads red text-white"><ion-icon name="call-outline"></ion-icon>&nbsp;9910115502</a></li>
+      </ul>
+      <ul class="menu">
+        <li><a href="https://www.youtube.com/channel/UCfClesu2tZTu-9XVWv3Ki6A"
+          class="ads a">YOUTUBE</a></li>
+        <li><a href="https://github.com/Pro-The-Dev-Op" class="ads a">GITHUB</a></li>
+        <li><a href="#ABOUT" class=" a adh jis href ads">ABOUT</a></li>
+        <li><a href="#STATS" class="a  ads">STATS</a></li>
+        <li><a href="#CONTACT" class=" a ads">CONTACT US</a></li>
+        <li><a href="#HOME" class=" a  ads">HOME</a></li>
+        <li> <a href="#TESTIMONIES" class="a ads">TESTIMONIES</a></li>
+      </ul>
+      <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
+        <img
+          src="https://yt3.ggpht.com/1HGYBt4n_lgptIbqe0Dk9bfrsHvJobhM3c3CqnPrKARyx8JUH1zw2n9ywl-pRMhyKuPfP6OzcxU=s176-c-k-c0x00ffffff-no-rj"
+          height="40" width="40">
+        <span class="ml-3 text-xl"><span  class="glitch text-bounce">I</span><span  class="text-bounce">&nbsp;&nbsp;</span> <span class="glitch text-bounce">A</span> <span class="glitch text-bounce">M</span>
+        <span class="glitch text-bounce">&nbsp;&nbsp;</span><span class="glitch text-bounce">P</span><span
+         class="glitch text-bounce">R</span><span  class="glitch text-bounce">O</span></span>
+      </a>
+      <p class="p">©Pro Gamer | All rights reserved</p>
+      <script
+      src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1">//imported dialogflow script</script>
+    <!--defining intent-->
+    <df-messenger style="position: absolute;" intent="WELCOME" chat-title="PROGAMER"
+      agent-id="179386f1-1011-4294-896d-971fabc1c904" language-code="en"></df-messenger>
+    <!--HTTPS only...-->
+    <script
+      src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1">//imported dialogflow script</script>
+    
+    </footer>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <!--footer-->
+</body>
+
+<style>
+  
+  
+  
+
+section{
+  font-family: 'Indie Flower', cursive;
+  background:#2980b9;
+
+}
+.row{
+  margin:10vh auto 0;
+  width:300px; height:300px;
+}
+.col-xs-4{
+  border:solid #2980b9 2px;
+  height:33.33%;
+  background:#fff;
+  text-align:center;
+  padding-top:20px;
+}
+.fa-circle-o{color:#2ecc71;}
+.fa-times{color:#e74c3c;}
+.btn{background:#f1c40f;color:#e74c3c;font-size:1.5em;font-weight:bold;margin:5px;}
+.btn:hover,.btn:focus,.btn:active{background:#f39c12;color:#ecf0f1;}
+.text{
+  position:fixed;
+  top:15%;
+  margin:0 auto;
+  left:0;right:0;
+  width:300px;
+  text-align:center;
+  cursor:default;
+}
+h1{
+  color:#2c3e50;
+  font-size:84px;
+}
+.buttons{
+  text-align:center;
+}</style>
+</html>
